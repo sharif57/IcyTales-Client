@@ -1,3 +1,5 @@
+import { ArrowRight } from "lucide-react";
+
 const Banner = () => {
     return <div>
         <div className="bg-no-repeat" style={{ backgroundImage: `url('/Figure → banner-lefttopimage.png.png')` }}>
@@ -6,7 +8,7 @@ const Banner = () => {
                     <p className="text-2xl font-semibold ">Welcome to The</p>
                     <h1 className="text-6xl font-bold ">Discover <span className="text-pink-500">Sweet</span> Delights!</h1>
                     <p>Relish the timeless taste of handcrafted ice cream, made with passion and the finest ingredients.</p>
-                    <button className="btn btn-outline">Browse Our Classic Flavors</button>
+                    <button className="btn btn-outline">Browse Our Classic Flavors <ArrowRight /></button>
                 </div>
                 <div
                     className=" bg-no-repeat bg-gray-200 rounded-full"
@@ -26,7 +28,7 @@ const Banner = () => {
                         <span className="text-pink-500"> Ice Creams</span></h1>
                     <p>From rich chocolate fudge to creamy vanilla sundaes,
                         discover our menu of classic ice cream creations.</p>
-                    <button className="btn btn-outline">Explore Our Menu</button>
+                    <button className="btn btn-outline">Explore Our Menu <ArrowRight /></button>
                 </div>
                 <img src="/Figure → relive-triangle.png.png" alt="" />
             </div>

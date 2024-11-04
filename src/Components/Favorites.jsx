@@ -13,7 +13,8 @@ import { ShoppingCart, Star } from 'lucide-react';
 const Favorites = () => {
 
 
-    return <div className=" py-14 bg-[#faf2ed]">
+    return <div className="py-14 bg-gradient-to-b from-[#faf2ed] to-[#f5e5f5]"> 
+
         <h1 className="text-5xl font-semibold pb-4 text-center">Our <span className="text-pink-500">Classic</span> Favorites</h1>
         <p className='text-center'>Check out our top products that our customers love.</p>
 

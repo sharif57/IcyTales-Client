@@ -1,7 +1,7 @@
 const Summer = () => {
-    return <div>
+    return <div className="mt-14">
         <div
-            className="bg-inherit  bg-no-repeat bg-bottom bg-right bg-indigo-500 "
+            className="bg-inherit  bg-no-repeat bg-bottom bg-right bg-indigo-500 p-4 "
             style={{ backgroundImage: `url('/Image (30).png')` }}
         >
             <div className=" container mx-auto ">
@@ -22,10 +22,7 @@ const Summer = () => {
                         </div>
                     </div>
                     <div>
-                        <div className="flex">
-                            <p className=" bg-pink-500 rounded-full ">50%</p>
-                            <img src="/Figure → special-dotedarrow.png.png" alt="" />
-                        </div>
+                        
                         <img src="/Figure → special-image.png.png" alt="" />
                     </div>
                 </div>

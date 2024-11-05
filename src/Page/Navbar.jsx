@@ -11,11 +11,11 @@ export default function Navbar() {
   const menuList = [
     {
       title: "Home",
-      path: "/home"
+      path: "/"
     },
     {
-      title: "Foods",
-      path: "/foods"
+      title: "About Us",
+      path: "/about"
     },
     {
       title: "Blog",

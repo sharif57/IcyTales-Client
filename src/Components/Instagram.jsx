@@ -19,28 +19,28 @@ const Instagram = () => {
                     </div>
                     <div className="relative rounded-lg overflow-hidden shadow-lg">
                         <img
-                            src="/Item.png"
+                            src="/Item (1).png"
                             alt="Ice Cream 1"
                             className="w-56 h-[300px] object-cover"
                         />
                     </div>
                     <div className="relative rounded-lg overflow-hidden shadow-lg">
                         <img
-                            src="/Item.png"
+                            src="/Link (3).png"
                             alt="Ice Cream 1"
                             className="w-56 h-[300px] object-cover"
                         />
                     </div>
                     <div className="relative rounded-lg overflow-hidden shadow-lg">
                         <img
-                            src="/Item.png"
+                            src="/Link (4).png"
                             alt="Ice Cream 1"
                             className="w-56 h-[300px] object-cover"
                         />
                     </div>
                     <div className="relative rounded-lg overflow-hidden shadow-lg">
                         <img
-                            src="/Item.png"
+                            src="/Link (5).png"
                             alt="Ice Cream 1"
                             className="w-56 h-[300px] object-cover"
                         />

@@ -1,5 +1,5 @@
 const Summer = () => {
-    return <div className="mt-14">
+    return <div className="mt-14 bg-indigo-500 ">
         <div
             className="bg-inherit  bg-no-repeat bg-bottom bg-right bg-indigo-500 p-4 "
             style={{ backgroundImage: `url('/Image (30).png')` }}

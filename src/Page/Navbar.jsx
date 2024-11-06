@@ -1,72 +1,7 @@
-// import  { useState } from 'react'
-// import logo from "/Group 1.png"
-// import { Link, useLocation } from 'react-router-dom'
-// import { Menu, X } from 'lucide-react';
-
-// export default function Navbar() {
-//   const [open,setOpen] = useState(false);
-//   // const [active,setActive] = useState("");
-//   const {pathname} = useLocation();
-
-//   const menuList = [
-//     {
-//       title: "Home",
-//       path: "/"
-//     },
-//     {
-//       title: "About Us",
-//       path: "/about"
-//     },
-//     {
-//       title: "",
-//       path: "/blogs"
-//     },
-//     {
-//       title: "Dashboard",
-//       path: "/dashboard"
-//     },
-//     {
-//       title: "Login",
-//       path: "/auth/login"
-//     },
-//   ]
-
-
-
-//   return (
-//     <nav className='lg:flex items-center justify-between container mx-auto'>
-      
-//         <div className='flex items-center justify-between'>
-//           <div>
-//             <img className='w-48' src={logo} alt="" />
-//           </div>
-//           <div className='lg:hidden' onClick={()=> setOpen(!open)}>
-//             {!open ? <Menu /> :<X />  }
-//           </div>
-//         </div>
-//         <ul className={`lg:flex items-center bg-primary lg:bg-transparent gap-10 text-xl absolute lg:static  h-auto  ${open ? "top-0 w-full top-[60px]" : "-top-96"}`}>
-//           {
-//             menuList.map((item,index)=> <li  className={`${item.path === pathname ? "text-primary font-bold": "text-black"} text-xl hover:text-primary duration-200`}><Link to={item.path}>{item.title}</Link></li>)
-//           }
-//           {/* {
-//             menuList.map((item,index)=> <li onClick={()=>setActive(item.title)} className={`${item.title === active ? "text-primary font-bold": "text-black"} text-xl hover:text-primary duration-200`}><Link to={item.path}>{item.title}</Link></li>)
-//           } */}
-//         </ul>
-//     </nav>
-//   )
-// }
-
-//   {/* <li className='text-secondary text-xl hover:text-primary duration-200'><Link to="/home">Home</Link></li>
-//           <li><Link to="/foods">Foods</Link></li>
-//           <li><Link to="/blog">Blog</Link></li>
-//           <li><Link to="/dashboard">Dashboard</Link></li>
-//           <li><Link to="/auth/login">Login</Link></li> */}
-
-
 import { useState } from 'react';
 import logo from '/Group 1.png';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, ChevronDown } from 'lucide-react';
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
@@ -83,12 +18,17 @@ export default function Navbar() {
       path: '/about',
     },
     {
-      title: 'Blogs',
+      title: 'Pages',
       path: '/blogs',
+      icon: <ChevronDown className="inline w-4 h-4 ml-1" />, // Add the icon here
       submenu: [
-        { title: 'Tech', path: '/blogs/tech' },
-        { title: 'Lifestyle', path: '/blogs/lifestyle' },
-        { title: 'Travel', path: '/blogs/travel' },
+        { title: 'Team', path: '/blogs/team' },
+        { title: 'Review', path: '/blogs/tech' },
+        { title: 'Shop', path: '/blogs/lifestyle' },
+        { title: 'Special Offers', path: '/blogs/lifestyle' },
+        { title: 'Privacy Policy', path: '/blogs/lifestyle' },
+        { title: 'Terms & Conditions', path: '/blogs/lifestyle' },
+        { title: 'Thank You', path: '/blogs/lifestyle' },
       ],
     },
     {
@@ -112,9 +52,8 @@ export default function Navbar() {
         </div>
       </div>
       <ul
-        className={`lg:flex items-center bg-primary lg:bg-transparent gap-10 text-xl absolute lg:static h-auto ${
-          open ? 'top-0 w-full top-[60px]' : '-top-96'
-        }`}
+        className={`lg:flex items-center bg-primary lg:bg-transparent gap-10 text-xl absolute lg:static h-auto ${open ? 'top-0 w-full top-[60px]' : '-top-96'
+          }`}
       >
         {menuList.map((item, index) => (
           <li
@@ -123,7 +62,10 @@ export default function Navbar() {
             onMouseEnter={() => item.submenu && setDropdownOpen(true)}
             onMouseLeave={() => item.submenu && setDropdownOpen(false)}
           >
-            <Link to={item.path}>{item.title}</Link>
+            <Link to={item.path} className="flex items-center">
+              {item.title}
+              {item.icon && item.icon} {/* Render icon if it exists */}
+            </Link>
 
             {/* Dropdown for Blogs */}
             {item.submenu && dropdownOpen && (

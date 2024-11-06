@@ -10,6 +10,7 @@ import {
 import Main from './Layouts/Main';
 import Home from './Components/Home';
 import About from './Page/About';
+import Teams from './Components/Teams';
 
 const router = createBrowserRouter([
   {
@@ -23,6 +24,10 @@ const router = createBrowserRouter([
       {
         path:'/about',
         element:<About></About>
+      },
+      {
+        path:'blogs/team',
+        element:<Teams></Teams>
       }
     ]
   },

@@ -2,6 +2,8 @@ import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import Statistics from "../Components/Statistics";
 import Team from "../Components/Team";
+import SubscriptionForm from "../Components/SubscriptionForm";
+
 
 const About = () => {
     return <div>
@@ -66,6 +68,7 @@ const About = () => {
 
         <Statistics></Statistics>
         <Team></Team>
+        <SubscriptionForm></SubscriptionForm>
     </div>;
 };
 export default About;

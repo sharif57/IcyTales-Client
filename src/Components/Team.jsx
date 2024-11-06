@@ -8,7 +8,7 @@ import 'swiper/css/pagination';
 
 // import required modules
 import { FreeMode, Pagination } from 'swiper/modules';
-import { Facebook, Instagram, Twitch, Twitter } from 'lucide-react';
+import { Facebook, Instagram, Twitter } from 'lucide-react';
 
 const Team = () => {
     return (
@@ -60,6 +60,22 @@ const Team = () => {
                         />
                         <h1 className="text-xl font-semibold mt-4">Patricia Woodrum</h1>
                         <p className="text-gray-500">Staff Worker</p>
+                        <div className='flex justify-center items-center'>
+                            <button className='bg-pink-200 p-3 rounded-full'><Facebook></Facebook></button>
+                            <button className='bg-pink-200 p-3 rounded-full'><Instagram></Instagram></button>
+                            <button className='bg-pink-200 p-3 rounded-full'><Twitter></Twitter></button>
+                        </div>
+                    </div>
+                </SwiperSlide>
+                <SwiperSlide>
+                    <div className="bg-white shadow-lg rounded-lg p-5 text-center space-y-2 ">
+                        <img
+                            src="/Figure → team-image3.jpg.png"
+                            alt="Marvin Joner"
+                            className=" rounded-full mx-auto object-cover "
+                        />
+                        <h1 className="text-xl font-semibold mt-4">Hannaz Stone</h1>
+                        <p className="text-gray-500">Shop Worker</p>
                         <div className='flex justify-center items-center'>
                             <button className='bg-pink-200 p-3 rounded-full'><Facebook></Facebook></button>
                             <button className='bg-pink-200 p-3 rounded-full'><Instagram></Instagram></button>

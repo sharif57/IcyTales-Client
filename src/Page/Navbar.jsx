@@ -23,7 +23,7 @@ export default function Navbar() {
       icon: <ChevronDown className="inline w-4 h-4 ml-1" />, // Add the icon here
       submenu: [
         { title: 'Team', path: '/blogs/team' },
-        { title: 'Review', path: '/blogs/tech' },
+        { title: 'Review', path: '/blogs/review' },
         { title: 'Shop', path: '/blogs/lifestyle' },
         { title: 'Special Offers', path: '/blogs/lifestyle' },
         { title: 'Privacy Policy', path: '/blogs/lifestyle' },

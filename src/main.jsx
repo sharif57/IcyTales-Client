@@ -13,6 +13,7 @@ import About from './Page/About';
 import Teams from './Components/Teams';
 import Review from './Page/Review';
 import Shop from './Page/shop';
+import ProductDetail from './Components/ProductDetail';
 
 const router = createBrowserRouter([
   {
@@ -38,6 +39,10 @@ const router = createBrowserRouter([
       {
         path:'blogs/shop',
         element:<Shop></Shop>
+      },
+      {
+        path:'productDetail',
+        element:<ProductDetail></ProductDetail>
       }
     ]
   },

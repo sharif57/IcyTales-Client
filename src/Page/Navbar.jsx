@@ -24,7 +24,7 @@ export default function Navbar() {
       submenu: [
         { title: 'Team', path: '/blogs/team' },
         { title: 'Review', path: '/blogs/review' },
-        { title: 'Shop', path: '/blogs/lifestyle' },
+        { title: 'Shop', path: '/blogs/shop' },
         { title: 'Special Offers', path: '/blogs/lifestyle' },
         { title: 'Privacy Policy', path: '/blogs/lifestyle' },
         { title: 'Terms & Conditions', path: '/blogs/lifestyle' },

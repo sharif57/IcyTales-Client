@@ -23,8 +23,7 @@ const PrivacyPolicy = () => {
                             We collect personal information such as your name, email address, and payment details when you create an account or make a purchase. We also collect usage data such as IP addresses, browser type, and pages visited.
                         </p>
                     </section>
-
-                    {/* How We Use Your Information */}
+                        {/* How We Use Your Information */}
                     <section>
                         <h2 className="text-xl font-semibold mb-2">2. How We Use Your Information:</h2>
                         <p className="text-base leading-relaxed">

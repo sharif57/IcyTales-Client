@@ -28,7 +28,7 @@ export default function Navbar() {
         { title: 'Cart', path: '/blogs/cart' },
         { title: 'CheckOut', path: '/blogs/checkOut' },
         { title: 'Privacy Policy', path: '/blogs/privacy' },
-        { title: 'Terms & Conditions', path: '/blogs/lifestyle' },
+        { title: 'Terms & Conditions', path: '/blogs/terms' },
         { title: 'Thank You', path: '/blogs/lifestyle' },
       ],
     },

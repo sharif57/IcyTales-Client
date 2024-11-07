@@ -17,6 +17,7 @@ import ProductDetail from './Components/ProductDetail';
 import ShoppingCart from './Page/ShoppingCart';
 import CheckoutForm from './Page/CheckoutForm';
 import PrivacyPolicy from './Page/PrivacyPolicy';
+import Conditions from './Page/Conditions';
 
 const router = createBrowserRouter([
   {
@@ -58,6 +59,10 @@ const router = createBrowserRouter([
       {
         path:'blogs/privacy',
         element:<PrivacyPolicy></PrivacyPolicy>
+      },
+      {
+        path:'/blogs/terms',
+        element:<Conditions></Conditions>
       }
     ]
   },

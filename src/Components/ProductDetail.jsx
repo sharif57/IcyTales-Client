@@ -143,7 +143,7 @@ const ProductDetail = () => {
                 </div>
             </div>
 
-            <div className="py-14 ">
+            <div className="py-14 mt-10 ">
 
                 <h1 className="text-5xl font-semibold pb-4 text-center">Related    <span className="text-pink-500">Products</span></h1>
                 <p className='text-center'>Choose from some of related products</p>

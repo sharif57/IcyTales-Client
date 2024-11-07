@@ -14,6 +14,9 @@ import Teams from './Components/Teams';
 import Review from './Page/Review';
 import Shop from './Page/shop';
 import ProductDetail from './Components/ProductDetail';
+import ShoppingCart from './Page/ShoppingCart';
+import CheckoutForm from './Page/CheckoutForm';
+import PrivacyPolicy from './Page/PrivacyPolicy';
 
 const router = createBrowserRouter([
   {
@@ -43,6 +46,18 @@ const router = createBrowserRouter([
       {
         path:'/productDetail',
         element:<ProductDetail></ProductDetail>
+      },
+      {
+        path:'blogs/cart',
+        element:<ShoppingCart></ShoppingCart>
+      },
+      {
+        path:'blogs/checkOut',
+        element:<CheckoutForm></CheckoutForm>
+      },
+      {
+        path:'blogs/privacy',
+        element:<PrivacyPolicy></PrivacyPolicy>
       }
     ]
   },

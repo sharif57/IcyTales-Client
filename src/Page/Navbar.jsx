@@ -33,8 +33,8 @@ export default function Navbar() {
       ],
     },
     {
-      title: 'Dashboard',
-      path: '/dashboard',
+      title: 'Blog',
+      path: '/cardGrid',
     },
     {
       title: 'Login',

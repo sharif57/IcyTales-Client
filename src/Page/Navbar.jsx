@@ -26,20 +26,19 @@ export default function Navbar() {
         { title: 'Review', path: '/blogs/review' },
         { title: 'Shop', path: '/blogs/shop' },
         { title: 'Cart', path: '/blogs/cart' },
+        { title: 'Load More', path: '/blogs/loadMore' },
         { title: 'CheckOut', path: '/blogs/checkOut' },
         { title: 'Privacy Policy', path: '/blogs/privacy' },
         { title: 'Terms & Conditions', path: '/blogs/terms' },
         { title: 'Thank You', path: '/blogs/thank' },
       ],
     },
+    
     {
       title: 'Blog',
       path: '/cardGrid',
     },
-    {
-      title: 'Login',
-      path: '/auth/login',
-    },
+    
   ];
 
   return (

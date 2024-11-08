@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const CardGrid = () => {
   // Sample data for cards
@@ -29,12 +30,20 @@ const CardGrid = () => {
   };
 
   return (
-    <div className="bg-gray-100 min-h-screen font-sans">
+    <div className="bg-gray-100  font-sans">
+         <div className="bg-gradient-to-b from-pink-100 to-pink-50 py-56">
+            <div>
+                <h1 className="text-center text-6xl font-bold">Blogs</h1>
+                <div className="text-center mt-6 bg-white p-5 w-1/4 shadow-lg rounded-full mx-auto flex-row gap-8 items-center">
+                    <Link to={'/'}>Home</Link>/
+                    <Link to={'/blog'}>Blogs</Link>
+                </div>
+            </div>
+        </div>
       {/* Navigation Bar */}
       <header className="bg-white shadow">
-        <div className="container mx-auto px-6 py-4 flex justify-between items-center">
-          <h1 className="text-pink-600 font-bold text-xl">Logo</h1>
-          <nav className="space-x-4">
+        <div className="container mx-auto px-6 py-4 flex justify-center  items-center">
+          <nav className="space-x-11">
             <a href="#" className="text-gray-600 hover:text-pink-600">Advice</a>
             <a href="#" className="text-gray-600 hover:text-pink-600">Announcements</a>
             <a href="#" className="text-gray-600 hover:text-pink-600">News</a>

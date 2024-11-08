@@ -20,6 +20,7 @@ import PrivacyPolicy from './Page/PrivacyPolicy';
 import Conditions from './Page/Conditions';
 import Thank from './Page/Thank';
 import CardGrid from './Components/CardGrid';
+import LoadMore from './Page/LoadMore';
 
 const router = createBrowserRouter([
   {
@@ -71,8 +72,12 @@ const router = createBrowserRouter([
         element:<Thank></Thank>
       },
       {
-        path:'/cardGrid',
+        path:'blogs/cardGrid',
         element:<CardGrid></CardGrid>
+      },
+      {
+        path:'blogs/loadMore',
+        element:<LoadMore></LoadMore>
       }
     ]
   },

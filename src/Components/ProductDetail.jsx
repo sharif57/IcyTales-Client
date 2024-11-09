@@ -120,7 +120,7 @@ const ProductDetail = () => {
                     <img
                         src={selectedImage}
                         alt="Selected Product"
-                        className="w-full h-auto rounded-lg shadow-lg"
+                        className="w-full h-[600px] rounded-lg shadow-lg"
                     />
                     <div className="flex space-x-4 mt-4">
                         {images.map((image, index) => (

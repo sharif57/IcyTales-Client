@@ -23,78 +23,81 @@ import CardGrid from './Components/CardGrid';
 import LoadMore from './Page/LoadMore';
 import Login from './Page/Login';
 import Signup from './Page/Signup';
+import AuthProvider from './AuthProvider/AuthProvider';
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Main></Main>,
-    children:[
+    children: [
       {
-        path:'/',
-        element:<Home></Home>
+        path: '/',
+        element: <Home></Home>
       },
       {
-        path:'/about',
-        element:<About></About>
+        path: '/about',
+        element: <About></About>
       },
       {
-        path:'blogs/team',
-        element:<Teams></Teams>
+        path: 'blogs/team',
+        element: <Teams></Teams>
       },
       {
-        path:'blogs/review',
-        element:<Review></Review>
+        path: 'blogs/review',
+        element: <Review></Review>
       },
       {
-        path:'blogs/shop',
-        element:<Shop></Shop>
+        path: 'blogs/shop',
+        element: <Shop></Shop>
       },
       {
-        path:'/productDetail',
-        element:<ProductDetail></ProductDetail>
+        path: '/productDetail',
+        element: <ProductDetail></ProductDetail>
       },
       {
-        path:'blogs/cart',
-        element:<ShoppingCart></ShoppingCart>
+        path: 'blogs/cart',
+        element: <ShoppingCart></ShoppingCart>
       },
       {
-        path:'blogs/checkOut',
-        element:<CheckoutForm></CheckoutForm>
+        path: 'blogs/checkOut',
+        element: <CheckoutForm></CheckoutForm>
       },
       {
-        path:'blogs/privacy',
-        element:<PrivacyPolicy></PrivacyPolicy>
+        path: 'blogs/privacy',
+        element: <PrivacyPolicy></PrivacyPolicy>
       },
       {
-        path:'/blogs/terms',
-        element:<Conditions></Conditions>
+        path: '/blogs/terms',
+        element: <Conditions></Conditions>
       },
       {
-        path:"blogs/thank",
-        element:<Thank></Thank>
+        path: "blogs/thank",
+        element: <Thank></Thank>
       },
       {
-        path:'/cardGrid',
-        element:<CardGrid></CardGrid>
+        path: '/cardGrid',
+        element: <CardGrid></CardGrid>
       },
       {
-        path:'blogs/loadMore',
-        element:<LoadMore></LoadMore>
+        path: 'blogs/loadMore',
+        element: <LoadMore></LoadMore>
       }
     ]
   },
   {
-    path:'/login',
-    element:<Login></Login>
+    path: '/login',
+    element: <Login></Login>
   },
   {
-    path:'/signUp',
-    element:<Signup></Signup>
+    path: '/signUp',
+    element: <Signup></Signup>
   }
 ]);
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <RouterProvider router={router} />
+    <AuthProvider>
+      <RouterProvider router={router} />
+    </AuthProvider>
   </StrictMode>,
 )

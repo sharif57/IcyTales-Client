@@ -33,7 +33,7 @@
 //         { title: 'Thank You', path: '/blogs/thank' },
 //       ],
 //     },
-    
+
 //     {
 //       title: 'Blog',
 //       path: '/cardGrid',
@@ -42,7 +42,7 @@
 //       title:'Log In',
 //       path:'/login'
 //     }
-    
+
 //   ];
 
 //   return (
@@ -92,10 +92,11 @@
 // }
 
 
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, ChevronDown, ShoppingCart, User } from 'lucide-react';
 import logo from '/Group 1.png';
+import { AuthContext } from '../AuthProvider/AuthProvider';
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
@@ -123,6 +124,8 @@ export default function Navbar() {
     },
     { title: 'Blog', path: '/cardGrid' },
   ];
+  const { user } = useContext(AuthContext)
+  console.log('user ', user);
 
   return (
     <nav className="bg-white shadow-md sticky top-0 z-50">
@@ -139,9 +142,8 @@ export default function Navbar() {
 
         {/* Menu items */}
         <ul
-          className={`lg:flex items-center gap-8 text-xl absolute lg:static bg-white lg:bg-transparent w-full lg:w-auto left-0 lg:left-auto transition-all duration-300 ease-in-out ${
-            open ? 'top-20 p-6 lg:p-0' : '-top-96'
-          }`}
+          className={`lg:flex items-center gap-8 text-xl absolute lg:static bg-white lg:bg-transparent w-full lg:w-auto left-0 lg:left-auto transition-all duration-300 ease-in-out ${open ? 'top-20 p-6 lg:p-0' : '-top-96'
+            }`}
         >
           {menuList.map((item, index) => (
             <li
@@ -170,13 +172,7 @@ export default function Navbar() {
 
           {/* Login and Cart buttons */}
           <li className="flex items-center gap-4 mt-4 lg:mt-0 lg:ml-4">
-            <Link
-              to="/login"
-              className="flex items-center gap-2 px-4 py-2 bg-primary text-white rounded-lg shadow-md hover:bg-purple-700 transition duration-300"
-            >
-              <User className="w-5 h-5" />
-              Log In
-            </Link>
+
             <Link
               to="/cart"
               className="flex items-center gap-2 px-4 py-2 bg-purple-600 text-white rounded-lg shadow-md hover:bg-purple-700 transition duration-300"
@@ -184,6 +180,55 @@ export default function Navbar() {
               <ShoppingCart className="w-5 h-5" />
               Cart
             </Link>
+            <div className="dropdown dropdown-end">
+              {/* Show this dropdown when the user is logged in */}
+              {user ? (
+                <>
+                  <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
+                    <div className="w-10 rounded-full">
+                      {/* Show user photo or default photo */}
+                      <img
+                        alt="User Avatar"
+                        src={user.photoURL || "/Figure → testimonial3-personimage1.jpg.png"}
+                      />
+                    </div>
+                  </div>
+                  <ul
+                    tabIndex={0}
+                    className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
+                  >
+                    <li>
+                      <a className="justify-between">
+                        Profile
+                        <span className="badge">New</span>
+                      </a>
+                    </li>
+                    <li><a>Settings</a></li>
+                    <li>
+                      <button
+                        // onClick={logOut}  // Uncomment this line to log out
+                        className="w-full text-left px-4 py-2 bg-red-500 text-white rounded-lg shadow-md hover:bg-red-600 transition duration-300"
+                      >
+                        Log Out
+                      </button>
+                    </li>
+                  </ul>
+                </>
+              ) : (
+                // Show this if the user is not logged in
+                <Link
+                  to="/login"
+                  className="flex items-center gap-2 px-4 py-2 bg-primary text-white rounded-lg shadow-md hover:bg-purple-700 transition duration-300"
+                >
+                  <User className="w-5 h-5" />
+                  Log In
+                </Link>
+              )}
+            </div>
+
+
+
+
           </li>
         </ul>
       </div>

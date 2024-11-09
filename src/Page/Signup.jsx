@@ -3,23 +3,32 @@ import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../AuthProvider/AuthProvider';
 
 const Signup = () => {
-  const { registerUser } = useContext(AuthContext);
+  const { registerUser, updateUserProfile } = useContext(AuthContext); // Assuming you have updateUserProfile function in context
   const navigate = useNavigate();
+  
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     password: '',
     confirmPassword: '',
+    profileImage: null, // Added profile image state
   });
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
 
   const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prevData) => ({
-      ...prevData,
-      [name]: value,
-    }));
+    const { name, value, type, files } = e.target;
+    if (type === 'file') {
+      setFormData((prevData) => ({
+        ...prevData,
+        [name]: files[0], // Store the file if it's an image
+      }));
+    } else {
+      setFormData((prevData) => ({
+        ...prevData,
+        [name]: value,
+      }));
+    }
   };
 
   const handleSubmit = async (e) => {
@@ -35,7 +44,16 @@ const Signup = () => {
 
     try {
       // Register the user
-      await registerUser(formData.email, formData.password);
+      const userCredential = await registerUser(formData.email, formData.password);
+
+      // Handle profile image upload (if any) and update displayName
+      if (formData.profileImage) {
+        const profileImageURL = await uploadProfileImage(formData.profileImage); // Assume uploadProfileImage is defined elsewhere
+        await updateUserProfile(formData.name, profileImageURL); // Update displayName and photoURL
+      } else {
+        await updateUserProfile(formData.name); // Only update displayName if no image
+      }
+
       setLoading(false);
       alert('Signup successful!');
       navigate('/'); // Navigate to the homepage or login page
@@ -43,6 +61,14 @@ const Signup = () => {
       setLoading(false);
       setError(err.message);
     }
+  };
+
+  // Simulated function to handle image upload (replace with real implementation)
+  const uploadProfileImage = async (file) => {
+    // Simulate uploading image and return the image URL
+    return new Promise((resolve) => {
+      setTimeout(() => resolve('https://your-cloud-storage-url.com/image.jpg'), 1000);
+    });
   };
 
   return (
@@ -106,12 +132,22 @@ const Signup = () => {
             />
           </div>
 
+          <div>
+            <label htmlFor="profileImage" className="block text-gray-600">Profile Image</label>
+            <input
+              type="file"
+              id="profileImage"
+              name="profileImage"
+              onChange={handleChange}
+              accept="image/*"
+              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:outline-none"
+            />
+          </div>
+
           <button
             type="submit"
             disabled={loading}
-            className={`w-full px-4 py-2 text-white rounded-lg ${
-              loading ? 'bg-gray-400 cursor-not-allowed' : 'bg-purple-600 hover:bg-purple-700'
-            } transition duration-300`}
+            className={`w-full px-4 py-2 text-white rounded-lg ${loading ? 'bg-gray-400 cursor-not-allowed' : 'bg-purple-600 hover:bg-purple-700'} transition duration-300`}
           >
             {loading ? 'Signing up...' : 'Sign Up'}
           </button>

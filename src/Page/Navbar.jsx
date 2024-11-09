@@ -98,7 +98,9 @@ import { Menu, X, ChevronDown, ShoppingCart, User } from 'lucide-react';
 import logo from '/Group 1.png';
 import { AuthContext } from '../AuthProvider/AuthProvider';
 
+
 export default function Navbar() {
+
   const [open, setOpen] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const { pathname } = useLocation();
@@ -124,8 +126,14 @@ export default function Navbar() {
     },
     { title: 'Blog', path: '/cardGrid' },
   ];
-  const { user } = useContext(AuthContext)
+  const { user , logOut} = useContext(AuthContext)
   console.log('user ', user);
+
+  const handleLogOut = () => {
+    logOut()
+        .then(() => console.log('logout successfully'))
+        .catch(error => console.error(error))
+}
 
   return (
     <nav className="bg-white shadow-md sticky top-0 z-50">
@@ -174,7 +182,7 @@ export default function Navbar() {
           <li className="flex items-center gap-4 mt-4 lg:mt-0 lg:ml-4">
 
             <Link
-              to="/cart"
+              to="/blogs/cart"
               className="flex items-center gap-2 px-4 py-2 bg-purple-600 text-white rounded-lg shadow-md hover:bg-purple-700 transition duration-300"
             >
               <ShoppingCart className="w-5 h-5" />
@@ -202,11 +210,14 @@ export default function Navbar() {
                         Profile
                         <span className="badge">New</span>
                       </a>
+                      <a className="justify-between">
+                        {user?.displayName}
+                      </a>
                     </li>
                     <li><a>Settings</a></li>
                     <li>
                       <button
-                        // onClick={logOut}  // Uncomment this line to log out
+                        onClick={handleLogOut}
                         className="w-full text-left px-4 py-2 bg-red-500 text-white rounded-lg shadow-md hover:bg-red-600 transition duration-300"
                       >
                         Log Out

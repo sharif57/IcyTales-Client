@@ -72,7 +72,7 @@ const router = createBrowserRouter([
         element:<Thank></Thank>
       },
       {
-        path:'blogs/cardGrid',
+        path:'/cardGrid',
         element:<CardGrid></CardGrid>
       },
       {

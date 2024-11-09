@@ -38,6 +38,10 @@ export default function Navbar() {
       title: 'Blog',
       path: '/cardGrid',
     },
+    {
+      title:'Log In',
+      path:'/login'
+    }
     
   ];
 

@@ -21,6 +21,8 @@ import Conditions from './Page/Conditions';
 import Thank from './Page/Thank';
 import CardGrid from './Components/CardGrid';
 import LoadMore from './Page/LoadMore';
+import Login from './Page/Login';
+import Signup from './Page/Signup';
 
 const router = createBrowserRouter([
   {
@@ -81,6 +83,14 @@ const router = createBrowserRouter([
       }
     ]
   },
+  {
+    path:'/login',
+    element:<Login></Login>
+  },
+  {
+    path:'/signUp',
+    element:<Signup></Signup>
+  }
 ]);
 
 createRoot(document.getElementById('root')).render(

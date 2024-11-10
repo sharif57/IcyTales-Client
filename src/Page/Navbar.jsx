@@ -94,7 +94,7 @@
 
 import { useContext, useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, ChevronDown, ShoppingCart, User } from 'lucide-react';
+import { Menu, X, ChevronDown, ShoppingCart, User, MessageCircleMore } from 'lucide-react';
 import logo from '/Group 1.png';
 import { AuthContext } from '../AuthProvider/AuthProvider';
 import axios from 'axios';
@@ -126,6 +126,7 @@ export default function Navbar() {
       ],
     },
     { title: 'Blog', path: '/cardGrid' },
+    { title: '', icon:<MessageCircleMore className='size-10' />, path: '/chatLite' },
   ];
   const { user, logOut } = useContext(AuthContext)
   console.log('user ', user);

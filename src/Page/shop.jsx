@@ -1,8 +1,13 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { ShoppingCart, Star } from "lucide-react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../AuthProvider/AuthProvider";
+import Swal from "sweetalert2";
 
 const Shop = () => {
+
+    const { user } = useContext(AuthContext)
+
     const itemsPerPage = 6;
     const [currentPage, setCurrentPage] = useState(1);
     const [searchTerm, setSearchTerm] = useState("");
@@ -40,6 +45,46 @@ const Shop = () => {
     const handlePageChange = (page) => setCurrentPage(page);
     const handleSearch = (e) => setSearchTerm(e.target.value);
     const handleSortChange = (e) => setSortOption(e.target.value);
+
+
+    const handlePost = (e, post) => {
+        e.preventDefault();
+        const name = user?.displayName;
+        const email = user?.email;
+        const image = user?.photoURL;
+        const title = post.title; // Get the title from the passed post object
+        const category = post.category || "General"; // Assuming a default category if not provided
+        const price = post.price;
+        const currentTime = new Date();
+        const photo = post.image || ""; // Assuming a default empty photo if not provided
+        const description = post.description;
+        const size = post.size || 'L';
+        const quantity = post.quantity || 1;
+        const color = post.quantity || 'white';
+
+        const newPost = { name, email,size, image,quantity,color, title, category, price, currentTime, photo, description };
+        console.log(newPost);
+
+        fetch('http://localhost:3000/addCart', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(newPost)
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.insertedId) {
+                    Swal.fire({
+                        title: 'Success!',
+                        text: 'Post Bookmarked Successfully',
+                        icon: 'success',
+                        confirmButtonText: 'Cool'
+                    });
+                    // e.target.reset();
+                }
+            });
+    };
+
+
 
     return (
         <div className="bg-[#fcfcfc]">
@@ -127,12 +172,13 @@ const Shop = () => {
                                         <p className="mt-1.5 line-clamp-3 text-gray-700">{item.description}</p>
                                         <div className="mt-4 flex justify-between items-center">
                                             <p className="text-2xl font-bold text-pink-500">${item.price.toFixed(2)}</p>
-                                            <button
+                                            <button onClick={(e) => handlePost(e, item)}
                                                 type="button"
                                                 className=""
                                             >
                                                 <ShoppingCart className='bg-[#683292] p-3 rounded-full size-14 text-white' />
                                             </button>
+>
                                         </div>
                                     </div>
                                 </Link>

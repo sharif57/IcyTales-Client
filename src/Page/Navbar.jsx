@@ -92,11 +92,12 @@
 // }
 
 
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, ChevronDown, ShoppingCart, User } from 'lucide-react';
 import logo from '/Group 1.png';
 import { AuthContext } from '../AuthProvider/AuthProvider';
+import axios from 'axios';
 
 
 export default function Navbar() {
@@ -126,14 +127,24 @@ export default function Navbar() {
     },
     { title: 'Blog', path: '/cardGrid' },
   ];
-  const { user , logOut} = useContext(AuthContext)
+  const { user, logOut } = useContext(AuthContext)
   console.log('user ', user);
 
   const handleLogOut = () => {
     logOut()
-        .then(() => console.log('logout successfully'))
-        .catch(error => console.error(error))
-}
+      .then(() => console.log('logout successfully'))
+      .catch(error => console.error(error))
+  }
+  const [cartItems, setCartItems] = useState([]);
+
+  useEffect(() => {
+    if (user?.email) {
+      axios.get(`http://localhost:3000/addCart/${user.email}`)
+        .then(res => setCartItems(res.data))
+        .catch(error => console.error("Error fetching cart items:", error));
+    }
+  }, [user]);
+
 
   return (
     <nav className="bg-white shadow-md sticky top-0 z-50">

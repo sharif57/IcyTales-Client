@@ -24,6 +24,7 @@ import LoadMore from './Page/LoadMore';
 import Login from './Page/Login';
 import Signup from './Page/Signup';
 import AuthProvider from './AuthProvider/AuthProvider';
+import AllComment from './Components/AllComments';
 
 const router = createBrowserRouter([
   {
@@ -82,6 +83,11 @@ const router = createBrowserRouter([
       {
         path: 'blogs/loadMore',
         element: <LoadMore></LoadMore>
+      },
+      {
+        path:"/allComment/:productId",
+        element:<AllComment></AllComment>,
+        loader: ({ params }) => fetch(`http://localhost:3000/reviews/${params.productId}`)
       }
     ]
   },

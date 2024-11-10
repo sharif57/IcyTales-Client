@@ -137,12 +137,18 @@ export default function Navbar() {
   }
   const [cartItems, setCartItems] = useState([]);
 
-  useEffect(() => {
+  // Function to fetch cart items
+  const fetchCartItems = () => {
     if (user?.email) {
       axios.get(`http://localhost:3000/addCart/${user.email}`)
         .then(res => setCartItems(res.data))
         .catch(error => console.error("Error fetching cart items:", error));
     }
+  };
+
+  // Initial fetch of cart items
+  useEffect(() => {
+    fetchCartItems();
   }, [user]);
 
 
@@ -197,7 +203,7 @@ export default function Navbar() {
               className="flex items-center gap-2 px-4 py-2 bg-purple-600 text-white rounded-lg shadow-md hover:bg-purple-700 transition duration-300"
             >
               <ShoppingCart className="w-5 h-5" />
-              Cart
+              Cart{cartItems.length}
             </Link>
             <div className="dropdown dropdown-end">
               {/* Show this dropdown when the user is logged in */}

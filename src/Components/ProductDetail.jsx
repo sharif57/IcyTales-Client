@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useLoaderData } from "react-router-dom";
 import { Star } from 'lucide-react';
 
@@ -15,6 +15,9 @@ import { Pagination } from 'swiper/modules';
 import { ShoppingCart } from 'lucide-react';
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import Swal from "sweetalert2";
+import { AuthContext } from "../AuthProvider/AuthProvider";
+import AllComments from "./AllComments";
 
 const ProductDetail = () => {
     const data = useLoaderData();
@@ -50,10 +53,34 @@ const ProductDetail = () => {
         setSelectedSize(size);
     };
 
+
     const handleReviewSubmit = (e) => {
         e.preventDefault();
-        setReviews([...reviews, { ...newReview, date: new Date().toLocaleDateString() }]);
-        setNewReview({ comment: "", rating: 5 });
+        const newReviewData = {
+            ...newReview,
+            reviewer: user.displayName,
+            date: new Date().toLocaleDateString(),
+            productId: data._id
+        };
+
+        fetch('http://localhost:3000/reviews', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(newReviewData)
+        })
+            .then(res => res.json())
+            .then(response => {
+                if (response.insertedId) {
+                    Swal.fire({
+                        title: 'Review Submitted!',
+                        text: 'Thank you for your feedback!',
+                        icon: 'success',
+                        confirmButtonText: 'Great'
+                    });
+                    setReviews([...reviews, newReviewData]);
+                    setNewReview({ comment: "", rating: 5 });
+                }
+            });
     };
 
     const renderContent = () => {
@@ -111,6 +138,48 @@ const ProductDetail = () => {
             );
         }
     };
+
+
+    const { user } = useContext(AuthContext)
+
+    const handlePost = (e, post) => {
+        e.preventDefault();
+        const name = user?.displayName;
+        const email = user?.email;
+        const image = user?.photoURL;
+        const title = post.title; // Get the title from the passed post object
+        const category = post.category || "General"; // Assuming a default category if not provided
+        const price = post.price;
+        const currentTime = new Date();
+        const photo = post.image || ""; // Assuming a default empty photo if not provided
+        const description = post.description;
+        const size = post.size || 'L';
+        const quantity = post.quantity || 1;
+        const color = post.quantity || 'white';
+
+        const newPost = { name, email, size, image, quantity, color, title, category, price, currentTime, photo, description };
+        console.log(newPost);
+
+        fetch('http://localhost:3000/addCart', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(newPost)
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.insertedId) {
+                    Swal.fire({
+                        title: 'Success!',
+                        text: 'Post Bookmarked Successfully',
+                        icon: 'success',
+                        confirmButtonText: 'Cool'
+                    });
+                    // e.target.reset();
+                }
+            });
+    };
+
+
 
     return (
         <div className="container mx-auto my-10 px-4">
@@ -180,7 +249,7 @@ const ProductDetail = () => {
                             <span>{quantity}</span>
                             <button onClick={() => handleQuantityChange(1)} className="text-gray-700 font-bold">+</button>
                         </div>
-                        <button className="px-6 py-3 bg-pink-500 text-white font-semibold rounded-md hover:bg-pink-600 transition">Add to Cart</button>
+                        <button onClick={(e) => handlePost(e, data)} className="px-6 py-3 bg-pink-500 text-white font-semibold rounded-md hover:bg-pink-600 transition">Add to Cart</button>
                     </div>
                 </div>
             </div>
@@ -203,6 +272,7 @@ const ProductDetail = () => {
                 </div>
             </div>
 
+            <AllComments productId={data._id}></AllComments>
             <div className="py-14 mt-10 ">
 
                 <h1 className="text-5xl font-semibold pb-4 text-center">Related    <span className="text-pink-500">Products</span></h1>
@@ -292,5 +362,4 @@ const ProductDetail = () => {
 };
 
 export default ProductDetail;
-
 

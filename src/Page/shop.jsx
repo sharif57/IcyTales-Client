@@ -172,13 +172,12 @@ const Shop = () => {
                                         <p className="mt-1.5 line-clamp-3 text-gray-700">{item.description}</p>
                                         <div className="mt-4 flex justify-between items-center">
                                             <p className="text-2xl font-bold text-pink-500">${item.price.toFixed(2)}</p>
-                                            <button onClick={(e) => handlePost(e, item)}
+                                            <button 
                                                 type="button"
-                                                className=""
-                                            >
+                                                className="" >
                                                 <ShoppingCart className='bg-[#683292] p-3 rounded-full size-14 text-white' />
                                             </button>
->
+
                                         </div>
                                     </div>
                                 </Link>

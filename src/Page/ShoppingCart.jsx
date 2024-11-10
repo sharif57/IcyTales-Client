@@ -195,9 +195,9 @@ const ShoppingCart = () => {
         <div>
             {/* Header Section */}
             <div className="bg-gradient-to-b from-pink-100 to-pink-50 py-56">
-                <h1 className="text-center text-6xl font-bold">Shop</h1>
+                <h1 className="text-center text-6xl font-bold">Cart</h1>
                 <div className="text-center mt-6 bg-white p-5 w-1/4 shadow-lg rounded-full mx-auto flex-row gap-8 items-center">
-                    <Link to="/">Home</Link>/<Link to="/blogs/shop">Shop</Link>
+                    <Link to="/">Home</Link>/<Link to="/blogs/cart">Cart</Link>
                 </div>
             </div>
             <div className="container mx-auto my-10 px-4 lg:px-10">
@@ -254,6 +254,10 @@ const ShoppingCart = () => {
                             />
                             <button onClick={handleApplyCoupon} className="ml-2 px-4 py-2 bg-purple-600 text-white rounded-md hover:bg-purple-700 transition">Apply</button>
                         </div>
+                        <div className="flex justify-between font-semibold text-lg mb-4">
+                            <span>coupon code:</span>
+                            <span className="text-pink-600">shopping20</span>
+                        </div>
                         <div className="flex justify-between mb-2">
                             <span className="text-gray-600">Sub Total:</span>
                             <span className="font-semibold">${subTotal.toFixed(2)}</span>
@@ -268,10 +272,7 @@ const ShoppingCart = () => {
                             <span className="text-gray-600">Shipping:</span>
                             <span className="font-semibold">${shippingCost.toFixed(2)}</span>
                         </div>
-                        <div className="flex justify-between font-semibold text-lg mb-4">
-                            <span>coupon code:</span>
-                            <span className="text-pink-600">shopping20</span>
-                        </div>
+
                         <div className="flex justify-between font-semibold text-lg mb-4">
                             <span>Grand Total:</span>
                             <span className="text-pink-600">${grandTotal.toFixed(2)}</span>

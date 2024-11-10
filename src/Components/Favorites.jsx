@@ -94,8 +94,8 @@ const Favorites = () => {
                                     />
                                     <div className="relative border border-gray-100 bg-white p-6">
                                         <div className="flex items-center justify-between">
-                                            <h3 className="text-2xl font-semibold text-gray-900">{item.title}</h3>
-                                            <p className="text-gray-700 flex gap-1">
+                                        <h3 className="text-xl font-semibold text-gray-900">{item.title.slice(0,14)}</h3>
+                                        <p className="text-gray-700 flex gap-1">
                                                 <Star className="text-yellow-400" />4.9/5
                                             </p>
                                         </div>
@@ -108,7 +108,6 @@ const Favorites = () => {
                                             >
                                                 <ShoppingCart className='bg-[#683292] p-3 rounded-full size-14 text-white' />
                                             </button>
->
                                         </div>
                                     </div>
                                 </Link>

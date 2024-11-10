@@ -2,6 +2,7 @@
 import { useState, useRef, useEffect } from "react";
 import axios from "axios";
 import ReactMarkdown from "react-markdown";
+import { ArrowUp } from "lucide-react";
 
 function App() {
   const [chatHistory, setChatHistory] = useState([]);
@@ -48,7 +49,7 @@ function App() {
   }
 
   return (
-    <div className=" inset-0 bg-gradient-to-r from-blue-50 to-blue-100">
+    <div className=" inset-0 bg-gradient-to-r from-pink-100 via-white to-pink-100">
       <div className="h-full max-w-4xl mx-auto flex flex-col p-3">
         {/* Fixed Header */}
         <header className="text-center py-4">
@@ -57,7 +58,7 @@ function App() {
             rel="noopener noreferrer"
             className="block">
             <h1 className="text-4xl font-bold text-blue-500 hover:text-blue-600 transition-colors">
-              Chat AI
+            ChatterBot
             </h1>
           </a>
         </header>
@@ -70,7 +71,7 @@ function App() {
           {chatHistory.length === 0 ? (
             <div className="h-full flex flex-col items-center justify-center text-center p-6">
               <div className="bg-blue-50 rounded-xl p-8 max-w-2xl">
-                <h2 className="text-2xl font-bold text-blue-600 mb-4">Welcome to Chat AI! 👋</h2>
+                <h2 className="text-2xl font-bold text-blue-600 mb-4">Welcome to ChatterBot ! 👋</h2>
                 <p className="text-gray-600 mb-4">
                   I'm here to help you with anything you'd like to know. You can ask me about:
                 </p>
@@ -139,7 +140,7 @@ function App() {
                 }`}
               disabled={generatingAnswer}
             >
-              Send
+              <ArrowUp className="size-10" />
             </button>
           </div>
         </form>

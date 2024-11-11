@@ -7,7 +7,7 @@ import { ArrowUp } from "lucide-react";
 function App() {
   const [chatHistory, setChatHistory] = useState([]);
   const [question, setQuestion] = useState("");
-  const [ setAnswer] = useState("");
+  const [setAnswer] = useState("");
   const [generatingAnswer, setGeneratingAnswer] = useState(false);
 
   const chatContainerRef = useRef(null);
@@ -53,12 +53,12 @@ function App() {
       <div className="h-full max-w-4xl mx-auto flex flex-col p-3">
         {/* Fixed Header */}
         <header className="text-center py-4">
-          <a 
+          <a
             target="_blank"
             rel="noopener noreferrer"
             className="block">
             <h1 className="text-4xl font-bold text-blue-500 hover:text-blue-600 transition-colors">
-            ChatterBot
+              ChatterBot
             </h1>
           </a>
         </header>
@@ -99,8 +99,8 @@ function App() {
               {chatHistory.map((chat, index) => (
                 <div key={index} className={`mb-4 ${chat.type === 'question' ? 'text-right' : 'text-left'}`}>
                   <div className={`inline-block max-w-[80%] p-3 rounded-lg overflow-auto hide-scrollbar ${chat.type === 'question'
-                      ? 'bg-blue-500 text-white rounded-br-none'
-                      : 'bg-gray-100 text-gray-800 rounded-bl-none'
+                    ? 'bg-blue-500 text-white rounded-br-none'
+                    : 'bg-gray-100 text-gray-800 rounded-bl-none'
                     }`}>
                     <ReactMarkdown className="overflow-auto hide-scrollbar">{chat.content}</ReactMarkdown>
                   </div>
@@ -136,12 +136,13 @@ function App() {
             ></textarea>
             <button
               type="submit"
-              className={`px-6 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 transition-colors ${generatingAnswer ? 'opacity-50 cursor-not-allowed' : ''
-                }`}
-              disabled={generatingAnswer}
+              className={`px-6 py-2 rounded-md text-white bg-blue-500 hover:bg-blue-600 transition-colors ${generatingAnswer
+              }`}
+              // disabled={generatingAnswer}
             >
               <ArrowUp className="size-10" />
             </button>
+
           </div>
         </form>
       </div>

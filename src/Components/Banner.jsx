@@ -36,7 +36,6 @@ const Banner = () => {
                             Browse Our Classic Flavors →
                         </a>
                     </div>
-
                     {/* Image Section */}
                     <div className="lg:w-1/2 relative">
                         <div className="relative w-full h-full flex items-center justify-center">
@@ -52,7 +51,7 @@ const Banner = () => {
         </div>
 
 
-        <div className="mt-14 flex justify-between items-center">
+        {/* <div className="mt-14 flex justify-between items-center">
             <div className="container mx-auto flex justify-between items-center">
                 <img src="/Figure → relive-circle.png.png" alt="" />
                 <img src="/relive-image.png.png" alt="" />
@@ -67,7 +66,38 @@ const Banner = () => {
                 <img src="/Figure → relive-triangle.png.png" alt="" />
             </div>
             <img className="chat-image" src="/Figure → relive-rightbottomimage.png.png" alt="" />
+        </div> */}
+
+        <div className="mt-14 flex flex-col lg:flex-row items-center lg:justify-between">
+            <div className="container mx-auto flex flex-col lg:flex-row items-center lg:justify-between gap-6 lg:gap-12">
+                {/* Left Image */}
+                <img src="/Figure → relive-circle.png.png" alt="" className="w-20 h-20 md:w-28 md:h-28 lg:w-auto lg:h-auto" />
+
+                {/* Main Image */}
+                <img src="/relive-image.png.png" alt="" className="size-[300px] md:w-48 md:h-48 lg:w-auto lg:h-auto" />
+
+                {/* Text Content */}
+                <div className="space-y-3 text-center lg:text-left max-w-xs md:max-w-md lg:max-w-lg">
+                    <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold">
+                        Relive the Sweet Memories of Classic
+                        <span className="text-pink-500"> Ice Creams</span>
+                    </h1>
+                    <p className="text-sm md:text-base lg:text-lg">
+                        From rich chocolate fudge to creamy vanilla sundaes, discover our menu of classic ice cream creations.
+                    </p>
+                    <button className="btn btn-outline flex items-center justify-center mx-auto lg:mx-0">
+                        Explore Our Menu <ArrowRight className="ml-2" />
+                    </button>
+                </div>
+
+                {/* Triangle Image */}
+                <img src="/Figure → relive-triangle.png.png" alt="" className="w-16 h-16 md:w-24 md:h-24 lg:w-auto lg:h-auto hidden lg:block" />
+            </div>
+
+            {/* Bottom Image for Smaller Screens */}
+            <img className="mt-8 lg:mt-0 chat-image w-24 h-24 md:w-32 md:h-32 lg:w-auto lg:h-auto" src="/Figure → relive-rightbottomimage.png.png" alt="" />
         </div>
+
     </div>;
 };
 export default Banner;

@@ -15,7 +15,7 @@ import Swal from 'sweetalert2';
 import { AuthContext } from '../AuthProvider/AuthProvider';
 
 const Favorites = () => {
-    const {user} = useContext(AuthContext)
+    const { user } = useContext(AuthContext)
 
     const [products, setProducts] = useState([])
 
@@ -68,40 +68,52 @@ const Favorites = () => {
         <p className='text-center'>Check out our top products that our customers love.</p>
 
 
-        <div className='flex '>
-            <img className='h-[300px] chat-header' src="/classic-leftimage.png.png" alt="" />
-            <div className='max-w-4xl mx-auto mt-12'>
+
+        <div className="flex flex-col lg:flex-row items-center lg:justify-between">
+            {/* Left Image */}
+            <img className="hidden md:block h-[300px] chat-header" src="/classic-leftimage.png.png" alt="" />
+
+            {/* Swiper Section */}
+            <div className="max-w-4xl mx-auto mt-12 w-full px-4 lg:px-0">
                 <Swiper
-                    slidesPerView={3}
-                    spaceBetween={30}
-                    pagination={{
-                        clickable: true,
+                    slidesPerView={1}
+                    spaceBetween={15}
+                    breakpoints={{
+                        640: { slidesPerView: 1, spaceBetween: 20 },
+                        768: { slidesPerView: 2, spaceBetween: 30 },
+                        1024: { slidesPerView: 3, spaceBetween: 30 },
                     }}
+                    pagination={{ clickable: true }}
                     modules={[Pagination]}
                     className="mySwiper"
                 >
-                    {
-                        products.slice(0, 6).map(item => <SwiperSlide key={item._id}>
+                    {products.slice(0, 6).map((item) => (
+                        <SwiperSlide key={item._id}>
                             <div>
-                                <Link to={`/productDetail/${item._id}`} className="group shadow-md relative block overflow-hidden bg-white rounded-lg">
+                                <Link
+                                    to={`/productDetail/${item._id}`}
+                                    className="group shadow-md relative block overflow-hidden bg-white rounded-lg"
+                                >
                                     <button className="absolute start-5 mt-1 top-4 z-10 rounded-full bg-white p-1.5 text-gray-900 transition hover:text-gray-900/75">
                                         <span className="sr-only">Wishlist</span>
                                     </button>
                                     <img
                                         src={item.image}
                                         alt={item.title}
-                                        className="rounded-lg p-4 mx-auto sm:h-72 object-cover transition-transform duration-300 group-hover:scale-105"
+                                        className="rounded-lg p-4 mx-auto h-48 sm:h-72 object-cover transition-transform duration-300 group-hover:scale-105"
                                     />
-                                    <div className="relative border border-gray-100 bg-white p-6">
+                                    <div className="relative border border-gray-100 bg-white p-4 md:p-6">
                                         <div className="flex items-center justify-between">
-                                        <h3 className="text-xl font-semibold text-gray-900">{item.title.slice(0,14)}</h3>
-                                        <p className="text-gray-700 flex gap-1">
+                                            <h3 className="text-lg md:text-xl font-semibold text-gray-900">{item.title.slice(0, 14)}</h3>
+                                            <p className="text-gray-700 flex gap-1">
                                                 <Star className="text-yellow-400" />4.9/5
                                             </p>
                                         </div>
-                                        <p className="mt-1.5 line-clamp-3 text-gray-700">{item.description}</p>
+                                        <p className="mt-1.5 line-clamp-3 text-gray-700 text-sm md:text-base">
+                                            {item.description}
+                                        </p>
                                         <div className="mt-4 flex justify-between items-center">
-                                            <p className="text-2xl font-bold text-pink-500">${item.price.toFixed(2)}</p>
+                                            <p className="text-xl md:text-2xl font-bold text-pink-500">${item.price.toFixed(2)}</p>
                                             <button onClick={(e) => handlePost(e, item)}
                                                 type="button"
                                                 className=""
@@ -112,12 +124,15 @@ const Favorites = () => {
                                     </div>
                                 </Link>
                             </div>
-                        </SwiperSlide>)
-                    }
+                        </SwiperSlide>
+                    ))}
                 </Swiper>
             </div>
-            <img className='h-[300px]  chat-image' src="\classic-rightimage.png.png" alt="" />
+
+            {/* Right Image */}
+            <img className='h-[300px] hidden md:block   chat-image' src="\classic-rightimage.png.png" alt="" />
         </div>
+
 
 
     </div>;

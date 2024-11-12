@@ -3,7 +3,7 @@ const Testimonials = () => {
         <div className="bg-gradient-to-b from-pink-50 to-white py-16">
             <div className="container mx-auto text-center space-y-8">
                 {/* Heading */}
-                <h1 className="text-5xl font-bold text-gray-800 w-1/2 mx-auto">
+                <h1 className="text-3xl lg:text-5xl font-bold text-gray-800 lg:w-1/2 mx-auto">
                     Hear from Our <span className="text-pink-500">Happy</span> <span className="text-pink-500">Ice Cream</span> Lovers
                 </h1>
 
@@ -37,16 +37,7 @@ const Testimonials = () => {
                     </div>
                 </div>
 
-                {/* Circular Images */}
-                <div className="flex justify-around items-center mt-12">
-                    <img className="w-20 h-20 rounded-full border-4 border-white" src="/Figure → testimonial-image1.png.png" alt="Person 1" />
-                    <img className="w-20 h-20 rounded-full border-4 border-white" src="/Figure → testimonial-image1.png.png" alt="Person 1" />
-                    <img className="w-20 h-20 rounded-full border-4 border-white" src="/Figure → testimonial-image1.png.png" alt="Person 1" />
-                    <img className="w-20 h-20 rounded-full border-4 border-white" src="/Figure → testimonial-image1.png.png" alt="Person 1" />
-                    <img className="w-20 h-20 rounded-full border-4 border-white" src="/Figure → testimonial-image1.png.png" alt="Person 1" />
-                    <img className="w-20 h-20 rounded-full border-4 border-white" src="/Figure → testimonial-image1.png.png" alt="Person 1" />
-                    
-                </div>
+               
             </div>
         </div>
     );

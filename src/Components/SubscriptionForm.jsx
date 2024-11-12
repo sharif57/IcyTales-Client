@@ -3,9 +3,9 @@ const SubscriptionForm = () => {
     return (
         <div className="flex items-center justify-center  w-full bg-white mt-11">
             <img src="/Figure → relive-circle.png (1).png" alt="" />
-            <div className=" p-8  text-center">
-                <div className=" w-3/4 mx-auto">
-                    <h1 className="text-5xl font-bold mb-2">
+            <div className=" lg:p-8  text-center">
+                <div className=" lg:w-3/4 mx-auto">
+                    <h1 className="lg:text-5xl text-3xl font-bold mb-2">
                         Sign up for <span className="text-pink-500">Exclusive Deals</span> and Updates
                     </h1>
                     <p className="text-gray-600 mb-4">

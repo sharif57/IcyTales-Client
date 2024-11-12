@@ -26,6 +26,7 @@ import Signup from './Page/Signup';
 import AuthProvider from './AuthProvider/AuthProvider';
 import AllComment from './Components/AllComments';
 import App from './Page/App';
+import Profile from './Page/Profile';
 
 const router = createBrowserRouter([
   {
@@ -92,6 +93,10 @@ const router = createBrowserRouter([
       {
         path:'/chatLite',
         element:<App></App>
+      },
+      {
+        path:'/profile',
+        element:<Profile></Profile>
       },
       {
         path:"/allComment/:productId",

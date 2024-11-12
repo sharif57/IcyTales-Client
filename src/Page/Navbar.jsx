@@ -201,10 +201,10 @@ export default function Navbar() {
 
             <Link
               to="/blogs/cart"
-              className="flex items-center gap-2 px-4 py-2 bg-purple-600 text-white rounded-lg shadow-md hover:bg-purple-700 transition duration-300"
+              className=""
             >
-              <ShoppingCart className="w-5 h-5" />
-              Cart{cartItems.length}
+              <ShoppingCart className="size-10" />
+              {/* Cart{cartItems} */}
             </Link>
             <div className="dropdown dropdown-end">
               {/* Show this dropdown when the user is logged in */}

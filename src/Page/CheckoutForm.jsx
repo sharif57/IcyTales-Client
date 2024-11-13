@@ -279,6 +279,8 @@ const CheckoutForm = () => {
         setPaymentMethod(method);
     };
 
+    
+
     useEffect(() => {
         if (user?.email) {
             axios.get(`http://localhost:3000/addCart/${user.email}`)

@@ -1,4 +1,5 @@
 import { ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const Banner = () => {
     return <div>
@@ -29,12 +30,11 @@ const Banner = () => {
                         <p className="text-gray-600 mt-4 mb-8">
                             Relish the timeless taste of handcrafted ice cream, made with passion and the finest ingredients.
                         </p>
-                        <a
-                            href="#"
+                        <Link to={'blogs/shop'}
                             className="inline-block px-6 py-3 bg-purple-600 text-white font-semibold rounded-full shadow-lg hover:bg-purple-700 transition duration-300"
                         >
                             Browse Our Classic Flavors →
-                        </a>
+                        </Link>
                     </div>
                     {/* Image Section */}
                     <div className="lg:w-1/2 relative">
@@ -85,9 +85,11 @@ const Banner = () => {
                     <p className="text-sm md:text-base lg:text-lg">
                         From rich chocolate fudge to creamy vanilla sundaes, discover our menu of classic ice cream creations.
                     </p>
-                    <button className="btn btn-outline flex items-center justify-center mx-auto lg:mx-0">
-                        Explore Our Menu <ArrowRight className="ml-2" />
-                    </button>
+                    <Link to={'blogs/shop'}>
+                        <button className="btn btn-outline flex items-center justify-center mx-auto lg:mx-0">
+                            Explore Our Menu <ArrowRight className="ml-2" />
+                        </button>
+                    </Link>
                 </div>
 
                 {/* Triangle Image */}

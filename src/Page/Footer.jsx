@@ -1,4 +1,5 @@
 
+import { Link } from 'react-router-dom';
 import logo from '/Group 1.png';
 
 const Footer = () => {
@@ -60,8 +61,8 @@ const Footer = () => {
                         </div>
 
                         <p className="mt-6 max-w-md text-center leading-relaxed text-gray-500 sm:max-w-xs sm:text-left">
-                            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Incidunt consequuntur amet culpa
-                            cum itaque neque.
+
+                            IcyTales is an online platform dedicated to storytelling and diverse content creation. IcyTales emphasizes creativity, often featuring unique perspectives on everyday life and providing readers with insights and entertainment alike.
                         </p>
 
                         <ul className="mt-8 flex justify-center gap-6 sm:justify-start md:gap-8">
@@ -264,7 +265,7 @@ const Footer = () => {
                                             />
                                         </svg>
 
-                                        <span className="flex-1 text-gray-700">john@doe.com</span>
+                                        <span className="flex-1 text-gray-700">sharifmahamud577951@gmail.com</span>
                                     </a>
                                 </li>
 
@@ -288,7 +289,7 @@ const Footer = () => {
                                             />
                                         </svg>
 
-                                        <span className="flex-1 text-gray-700">0123456789</span>
+                                        <span className="flex-1 text-gray-700">01611198984</span>
                                     </a>
                                 </li>
 
@@ -316,7 +317,7 @@ const Footer = () => {
                                     </svg>
 
                                     <address className="-mt-0.5 flex-1 not-italic text-gray-700">
-                                        213 Lane, London, United Kingdom
+                                        1941 Bashtoil, Mirzapur, Tangail, Bangladesh
                                     </address>
                                 </li>
                             </ul>
@@ -329,24 +330,24 @@ const Footer = () => {
                         <p className="text-sm text-gray-500">
                             <span className="block sm:inline">All rights reserved.</span>
 
-                            <a
+                            <Link to={'/terms'}
                                 className="inline-block text-teal-600 underline transition hover:text-teal-600/75"
-                                href="#"
                             >
                                 Terms & Conditions
-                            </a>
+                            </Link>
 
                             <span>&middot;</span>
 
-                            <a
+                            <Link to={'/privacy'}
                                 className="inline-block text-teal-600 underline transition hover:text-teal-600/75"
-                                href="#"
                             >
                                 Privacy Policy
-                            </a>
+                            </Link>
                         </p>
 
-                        <p className="mt-4 text-sm text-gray-500 sm:order-first sm:mt-0">&copy; 2022 Company Name</p>
+                        <p className="mt-4 text-sm text-gray-500 sm:order-first sm:mt-0">
+                            &copy; {new Date().getFullYear()} {"Your Company Name"}
+                        </p>
                     </div>
                 </div>
             </div>

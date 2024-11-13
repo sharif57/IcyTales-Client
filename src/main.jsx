@@ -27,6 +27,8 @@ import AuthProvider from './AuthProvider/AuthProvider';
 import AllComment from './Components/AllComments';
 import App from './Page/App';
 import Profile from './Page/Profile';
+import PrivateRoutes from './Routes/PrivateRoutes';
+import Favorites from './Components/Favorites';
 
 const router = createBrowserRouter([
   {
@@ -55,23 +57,27 @@ const router = createBrowserRouter([
       },
       {
         path: '/productDetail/:id',
-        element: <ProductDetail></ProductDetail>,
+        element: <PrivateRoutes><ProductDetail></ProductDetail></PrivateRoutes>,
         loader: ({ params }) => fetch(`http://localhost:3000/product/${params.id}`)
       },
       {
         path: 'blogs/cart',
-        element: <ShoppingCart></ShoppingCart>
+        element: <PrivateRoutes> <ShoppingCart></ShoppingCart></PrivateRoutes>
       },
       {
-        path: 'blogs/checkOut',
+        path:'favrite',
+        element:<PrivateRoutes><Favorites></Favorites></PrivateRoutes>
+      },
+      {
+        path: '/checkOut',
         element: <CheckoutForm></CheckoutForm>
       },
       {
-        path: 'blogs/privacy',
+        path: '/privacy',
         element: <PrivacyPolicy></PrivacyPolicy>
       },
       {
-        path: '/blogs/terms',
+        path: '/terms',
         element: <Conditions></Conditions>
       },
       {
@@ -91,16 +97,16 @@ const router = createBrowserRouter([
       //   element:<Chatbot></Chatbot>
       // },
       {
-        path:'/chatLite',
-        element:<App></App>
+        path: '/chatLite',
+        element: <App></App>
       },
       {
-        path:'/profile',
-        element:<Profile></Profile>
+        path: '/profile',
+        element: <PrivateRoutes><Profile></Profile></PrivateRoutes>
       },
       {
-        path:"/allComment/:productId",
-        element:<AllComment></AllComment>,
+        path: "/allComment/:productId",
+        element: <AllComment></AllComment>,
         loader: ({ params }) => fetch(`http://localhost:3000/reviews/${params.productId}`)
       }
     ]

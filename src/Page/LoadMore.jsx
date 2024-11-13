@@ -27,12 +27,15 @@ const LoadMore = () => {
     ];
 
     return <div>
-        <div className="bg-gradient-to-b from-pink-100 to-pink-50 py-56">
+        <div className="bg-gradient-to-b from-pink-100 to-pink-50 py-16 sm:py-28 md:py-56">
             <div>
-                <h1 className="text-center text-6xl font-bold">Load More</h1>
-                <div className="text-center mt-6 bg-white p-5 w-1/4 shadow-lg rounded-full mx-auto flex-row gap-8 items-center">
-                    <Link to={'/'}>Home</Link>/
-                    <Link to={'/loadMore'}>Load More</Link>
+                <h1 className="text-center text-4xl sm:text-5xl md:text-6xl font-bold">
+                    Load More
+                </h1>
+                <div className="text-center mt-6 bg-white p-4 sm:p-5 w-full sm:w-3/4 md:w-1/4 shadow-lg rounded-full mx-auto flex flex-wrap gap-4 items-center justify-center">
+                    <Link to={'/'} className="text-gray-700 hover:text-pink-500">Home</Link>
+                    <span>/</span>
+                    <Link to={''} className="text-gray-700 hover:text-pink-500">Load More</Link>
                 </div>
             </div>
         </div>

@@ -111,22 +111,22 @@ export default function Navbar() {
     { title: 'About Us', path: '/about' },
     {
       title: 'Pages',
-      path: '/blogs',
+      // path: '/blogs',
       icon: <ChevronDown className="inline w-4 h-4 ml-1" />,
       submenu: [
-        { title: 'Team', path: '/blogs/team' },
-        { title: 'Review', path: '/blogs/review' },
         { title: 'Shop', path: '/blogs/shop' },
         { title: 'Cart', path: '/blogs/cart' },
+        { title: 'Team', path: '/blogs/team' },
+        { title: 'Review', path: '/blogs/review' },
         { title: 'Load More', path: '/blogs/loadMore' },
-        { title: 'CheckOut', path: '/blogs/checkOut' },
-        { title: 'Privacy Policy', path: '/blogs/privacy' },
-        { title: 'Terms & Conditions', path: '/blogs/terms' },
-        { title: 'Thank You', path: '/blogs/thank' },
+        // // { title: 'CheckOut', path: '/blogs/checkOut' },
+        // { title: 'Privacy Policy', path: '/blogs/privacy' },
+        // { title: 'Terms & Conditions', path: '/blogs/terms' },
+        // { title: 'Thank You', path: '/blogs/thank' },
       ],
     },
     { title: 'Blog', path: '/cardGrid' },
-    { title: '', icon:<MessageCircleMore className='size-10' />, path: '/chatLite' },
+    { title: '', icon: <MessageCircleMore className='size-10' />, path: '/chatLite' },
   ];
   const { user, logOut } = useContext(AuthContext)
   console.log('user ', user);
@@ -224,10 +224,10 @@ export default function Navbar() {
                     className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
                   >
                     <li>
-                      <a className="justify-between">
+                      <Link to={'/profile'} className="justify-between">
                         Profile
                         <span className="badge">New</span>
-                      </a>
+                      </Link>
                       <a className="justify-between">
                         {user?.displayName}
                       </a>

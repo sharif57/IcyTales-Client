@@ -114,12 +114,15 @@ const Favorites = () => {
                                         </p>
                                         <div className="mt-4 flex justify-between items-center">
                                             <p className="text-xl md:text-2xl font-bold text-pink-500">${item.price.toFixed(2)}</p>
-                                            <button onClick={(e) => handlePost(e, item)}
+                                            <button
+                                                onClick={(e) => handlePost(e, item)}
                                                 type="button"
                                                 className=""
+                                                disabled={!user}
                                             >
-                                                <ShoppingCart className='bg-[#683292] p-3 rounded-full size-14 text-white' />
+                                                <ShoppingCart className="bg-[#683292] p-3 rounded-full text-white size-14" />
                                             </button>
+
                                         </div>
                                     </div>
                                 </Link>

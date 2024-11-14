@@ -64,7 +64,7 @@ const ShoppingCart = () => {
                             if (response.data.deletedCount > 0) {
                                 Swal.fire({
                                     title: "Deleted!",
-                                    text: "Your bookMark item has been deleted.",
+                                    text: "Item deleted from cart. Happy shopping!",
                                     icon: "success"
                                 });
                                 setCartItems(prevBookmarks => prevBookmarks.filter(i => i._id !== _id));

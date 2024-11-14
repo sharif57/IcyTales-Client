@@ -75,7 +75,7 @@ const Shop = () => {
                 if (data.insertedId) {
                     Swal.fire({
                         title: 'Success!',
-                        text: 'Post Bookmarked Successfully',
+                        text: 'This item is now in your cart. Enjoy your shopping!',
                         icon: 'success',
                         confirmButtonText: 'Cool'
                     });

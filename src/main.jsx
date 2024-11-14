@@ -111,6 +111,11 @@ const router = createBrowserRouter([
       }
     ]
   },
+  
+  // admin related routes
+  {
+
+  },
   {
     path: '/login',
     element: <Login></Login>

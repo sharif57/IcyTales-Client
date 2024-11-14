@@ -3,23 +3,10 @@ import { Link } from "react-router-dom";
 
 const Banner = () => {
     return <div>
-        {/* <div className="bg-no-repeat" style={{ backgroundImage: `url('/Figure → banner-lefttopimage.png.png')` }}>
-            <div className="flex items-center justify-between container mx-auto">
-                <div className="space-y-2">
-                    <p className="text-2xl font-semibold ">Welcome to The</p>
-                    <h1 className="text-6xl font-bold ">Discover <span className="text-pink-500">Sweet</span> Delights!</h1>
-                    <p>Relish the timeless taste of handcrafted ice cream, made with passion and the finest ingredients.</p>
-                    <button className="btn btn-outline">Browse Our Classic Flavors <ArrowRight /></button>
-                </div>
-                <div
-                    className=" bg-no-repeat bg-gray-200 rounded-full"
-                >
-                    <img className="size-[600px] p-4" src="/banner-image.png.png" alt="" />
-                </div>
-            </div>
-        </div> */}
+     
+     
         <div className="bg-no-repeat" style={{ backgroundImage: `url('/Figure → banner-lefttopimage.png.png')` }}>
-            <div className="bg-gradient-to-r from-pink-100 via-white to-pink-100 min-h-screen flex items-center justify-center ">
+            <div className="bg-gradient-to-r from-pink-100 via-white to-pink-100  flex items-center justify-center ">
                 <div className="container mx-auto px-6 py-10 text-center lg:text-left flex flex-col lg:flex-row items-center gap-10">
                     {/* Text Section */}
                     <div className="lg:w-1/2">

@@ -1,1 +1,1 @@
-<img  width="800" src="https://i.postimg.cc/m2sd6yQX/screencapture-icy-tales-client-vercel-app-2024-11-14-20-22-57.png" />
+<img  width="800" src="https://i.ibb.co.com/Sw5wx1h/screencapture-icy-tales-client-vercel-app-2024-11-14-20-22-57.png" />

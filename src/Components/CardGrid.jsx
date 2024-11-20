@@ -8,7 +8,7 @@ const CardGrid = () => {
   
 
   useEffect(() => {
-    fetch('http://localhost:3000/blogs')
+    fetch('https://icy-tales-backend.vercel.app/blogs')
       .then(res => res.json())
       .then(data => setBlogs(data))
   }, []);

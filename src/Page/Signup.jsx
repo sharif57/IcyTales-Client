@@ -62,7 +62,7 @@ const Signup = () => {
       await updateUserProfile(formData.name, profileImageURL);
 
       // Post the data to MongoDB through your backend API
-      await fetch('http://localhost:3000/signup', {
+      await fetch('https://icy-tales-backend.vercel.app/users', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

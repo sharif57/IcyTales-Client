@@ -20,7 +20,7 @@ const BestSellers = () => {
     const [products, setProducts] = useState([])
 
     useEffect(() => {
-        fetch('http://localhost:3000/product')
+        fetch('https://icy-tales-backend.vercel.app/product')
             .then(res => res.json())
             .then(data => setProducts(data))
     }, [])
@@ -45,7 +45,7 @@ const BestSellers = () => {
         const newPost = { name, email, size, image, quantity, color, title, category, price, currentTime, photo, description };
         console.log(newPost);
 
-        fetch('http://localhost:3000/addCart', {
+        fetch('https://icy-tales-backend.vercel.app/addCart', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(newPost)

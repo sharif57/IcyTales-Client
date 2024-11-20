@@ -4,7 +4,7 @@ const AllComments = ({ productId }) => {
   const [comments, setComments] = useState([]);
 
   useEffect(() => {
-    fetch(`http://localhost:3000/reviews/${productId}`)
+    fetch(`https://icy-tales-backend.vercel.app/reviews/${productId}`)
       .then((res) => res.json())
       .then((data) => {
         console.log(data);

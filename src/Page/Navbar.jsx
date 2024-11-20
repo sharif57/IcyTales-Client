@@ -94,10 +94,11 @@
 
 import { useContext, useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, ChevronDown, ShoppingCart, User, MessageCircleMore } from 'lucide-react';
+import { Menu, X, ChevronDown, ShoppingCart, User, MessageCircleMore, ShoppingBag } from 'lucide-react';
 import logo from '/Group 1.png';
 import { AuthContext } from '../AuthProvider/AuthProvider';
 import axios from 'axios';
+import { useCart } from '../CartContext/CartContext';
 
 
 export default function Navbar() {
@@ -105,6 +106,7 @@ export default function Navbar() {
   const [open, setOpen] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const { pathname } = useLocation();
+  const { items } = useCart()
 
   const menuList = [
     { title: 'Home', path: '/' },
@@ -141,7 +143,7 @@ export default function Navbar() {
   // Function to fetch cart items
   const fetchCartItems = () => {
     if (user?.email) {
-      axios.get(`http://localhost:3000/addCart/${user.email}`)
+      axios.get(`https://icy-tales-backend.vercel.app/addCart/${user.email}`)
         .then(res => setCartItems(res.data))
         .catch(error => console.error("Error fetching cart items:", error));
     }
@@ -199,13 +201,13 @@ export default function Navbar() {
           {/* Login and Cart buttons */}
           <li className="flex items-center gap-4 mt-4 lg:mt-0 lg:ml-4">
 
-            <Link
-              to="/blogs/cart"
-              className=""
-            >
-              <ShoppingCart className="size-10" />
-              {/* Cart{cartItems} */}
+            <Link to="/blogs/cart" className="relative inline-flex items-center space-x-2 text-gray-800 hover:text-gray-600">
+              <ShoppingBag className="size-10" />
+              <span className="absolute top-0 right-0 -mt-2 -mr-2 w-5 h-5 bg-red-500 text-white text-xs font-semibold rounded-full flex items-center justify-center">
+                {items.length}
+              </span>
             </Link>
+
             <div className="dropdown dropdown-end">
               {/* Show this dropdown when the user is logged in */}
               {user ? (

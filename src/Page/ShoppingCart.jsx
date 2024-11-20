@@ -4,9 +4,11 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../AuthProvider/AuthProvider";
 import axios from "axios";
 import Swal from "sweetalert2";
+import { useCart } from "../CartContext/CartContext";
 
 const ShoppingCart = () => {
     const { user } = useContext(AuthContext);
+    const {handleDelete} = useCart()
     const [cartItems, setCartItems] = useState([]);
     const [coupon, setCoupon] = useState("");
     const [isDiscountApplied, setIsDiscountApplied] = useState(false);
@@ -14,7 +16,7 @@ const ShoppingCart = () => {
     // Fetch cart items based on the user's email
     useEffect(() => {
         if (user?.email) {
-            axios.get(`http://localhost:3000/addCart/${user.email}`)
+            axios.get(`https://icy-tales-backend.vercel.app/addCart/${user.email}`)
                 .then(res => setCartItems(res.data))
                 .catch(error => console.error("Error fetching cart items:", error));
         }
@@ -47,35 +49,35 @@ const ShoppingCart = () => {
         }
     };
 
-    const handleDelete = _id => {
-        Swal.fire({
-            title: "Are you sure?",
-            text: "You won't be able to revert this!",
-            icon: "warning",
-            showCancelButton: true,
-            confirmButtonColor: "#3085d6",
-            cancelButtonColor: "#d33",
-            confirmButtonText: "Yes, delete it!"
-        })
-            .then(result => {
-                if (result.isConfirmed) {
-                    axios.delete(`http://localhost:3000/deleteItem/${_id}`)
-                        .then(response => {
-                            if (response.data.deletedCount > 0) {
-                                Swal.fire({
-                                    title: "Deleted!",
-                                    text: "Item deleted from cart. Happy shopping!",
-                                    icon: "success"
-                                });
-                                setCartItems(prevBookmarks => prevBookmarks.filter(i => i._id !== _id));
-                            }
-                        })
-                        .catch(error => {
-                            console.error("Error deleting bookmark:", error);
-                        });
-                }
-            });
-    };
+    // const handleDelete = _id => {
+    //     Swal.fire({
+    //         title: "Are you sure?",
+    //         text: "You won't be able to revert this!",
+    //         icon: "warning",
+    //         showCancelButton: true,
+    //         confirmButtonColor: "#3085d6",
+    //         cancelButtonColor: "#d33",
+    //         confirmButtonText: "Yes, delete it!"
+    //     })
+    //         .then(result => {
+    //             if (result.isConfirmed) {
+    //                 axios.delete(`https://icy-tales-backend.vercel.app/deleteItem/${_id}`)
+    //                     .then(response => {
+    //                         if (response.data.deletedCount > 0) {
+    //                             Swal.fire({
+    //                                 title: "Deleted!",
+    //                                 text: "Item deleted from cart. Happy shopping!",
+    //                                 icon: "success"
+    //                             });
+    //                             setCartItems(prevBookmarks => prevBookmarks.filter(i => i._id !== _id));
+    //                         }
+    //                     })
+    //                     .catch(error => {
+    //                         console.error("Error deleting bookmark:", error);
+    //                     });
+    //             }
+    //         });
+    // };
 
     return (
         <div>

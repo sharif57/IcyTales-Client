@@ -29,6 +29,17 @@ import App from './Page/App';
 import Profile from './Page/Profile';
 import PrivateRoutes from './Routes/PrivateRoutes';
 import Favorites from './Components/Favorites';
+import Dashboard from './Dashboard/Dashboard';
+import User from './Dashboard/User';
+
+import {
+  QueryClient,
+  QueryClientProvider,
+} from '@tanstack/react-query'
+import ManageUser from './Dashboard/ManageUser';
+import { CartProvider } from './CartContext/CartContext';
+
+const queryClient = new QueryClient()
 
 const router = createBrowserRouter([
   {
@@ -58,15 +69,15 @@ const router = createBrowserRouter([
       {
         path: '/productDetail/:id',
         element: <PrivateRoutes><ProductDetail></ProductDetail></PrivateRoutes>,
-        loader: ({ params }) => fetch(`http://localhost:3000/product/${params.id}`)
+        loader: ({ params }) => fetch(`https://icy-tales-backend.vercel.app/product/${params.id}`)
       },
       {
         path: 'blogs/cart',
         element: <PrivateRoutes> <ShoppingCart></ShoppingCart></PrivateRoutes>
       },
       {
-        path:'favrite',
-        element:<PrivateRoutes><Favorites></Favorites></PrivateRoutes>
+        path: 'favrite',
+        element: <PrivateRoutes><Favorites></Favorites></PrivateRoutes>
       },
       {
         path: '/checkOut',
@@ -107,13 +118,21 @@ const router = createBrowserRouter([
       {
         path: "/allComment/:productId",
         element: <AllComment></AllComment>,
-        loader: ({ params }) => fetch(`http://localhost:3000/reviews/${params.productId}`)
+        loader: ({ params }) => fetch(`https://icy-tales-backend.vercel.app/reviews/${params.productId}`)
       }
     ]
   },
-  
+
   // admin related routes
   {
+    path: '/dashboard',
+    element: <Dashboard></Dashboard>,
+    children: [
+      {
+        path: "manageUsers",
+        element: <ManageUser></ManageUser>
+      }
+    ]
 
   },
   {
@@ -129,7 +148,11 @@ const router = createBrowserRouter([
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <AuthProvider>
-      <RouterProvider router={router} />
+      <QueryClientProvider client={queryClient}>
+        <CartProvider>
+          <RouterProvider router={router} />
+        </CartProvider>
+      </QueryClientProvider>
     </AuthProvider>
   </StrictMode>,
 )

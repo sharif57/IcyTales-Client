@@ -7,7 +7,7 @@ import { ArrowUp } from "lucide-react";
 function App() {
   const [chatHistory, setChatHistory] = useState([]);
   const [question, setQuestion] = useState("");
-  const [setAnswer] = useState("");
+  const [answer, setAnswer] = useState("");
   const [generatingAnswer, setGeneratingAnswer] = useState(false);
 
   const chatContainerRef = useRef(null);
@@ -31,7 +31,7 @@ function App() {
 
     try {
       const response = await axios({
-        url: 'https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=AIzaSyAain92GkOOnHWGkyUwMk49dH_AEypWzv8',
+        url: 'https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=AIzaSyAAqfA0f2nbOjMPPKKGR_qQh2K3Ag3X2w0',
         method: "post",
         data: {
           contents: [{ parts: [{ text: question }] }],

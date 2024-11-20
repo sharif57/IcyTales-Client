@@ -15,7 +15,7 @@
 
 //     useEffect(() => {
 //         if (user?.email) {
-//             axios.get(`http://localhost:3000/addCart/${user.email}`)
+//             axios.get(`https://icy-tales-backend.vercel.app/addCart/${user.email}`)
 //                 .then(res => setCartItems(res.data))
 //                 .catch(error => console.error("Error fetching cart items:", error));
 //         }
@@ -138,7 +138,7 @@
 
 //     useEffect(() => {
 //         if (user?.email) {
-//             axios.get(`http://localhost:3000/addCart/${user.email}`)
+//             axios.get(`https://icy-tales-backend.vercel.app/addCart/${user.email}`)
 //                 .then(res => {
 //                     setCartItems(res.data);
 //                     calculateTotalPrice(res.data); // Calculate total price when cart items are fetched
@@ -283,7 +283,7 @@ const CheckoutForm = () => {
 
     useEffect(() => {
         if (user?.email) {
-            axios.get(`http://localhost:3000/addCart/${user.email}`)
+            axios.get(`https://icy-tales-backend.vercel.app/addCart/${user.email}`)
                 .then(res => {
                     setCartItems(res.data);
                     calculateTotalPrice(res.data); // Calculate total price when cart items are fetched
@@ -307,7 +307,7 @@ const CheckoutForm = () => {
 
     const createPaymentIntent = async (price) => {
         try {
-            const response = await axios.post('http://localhost:3000/create-payment-intent', { price });
+            const response = await axios.post('https://icy-tales-backend.vercel.app/create-payment-intent', { price });
             setClientSecret(response.data.clientSecret);
         } catch (error) {
             console.error("Error creating payment intent:", error);

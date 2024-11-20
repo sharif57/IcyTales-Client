@@ -1,4 +1,3 @@
-
 import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../AuthProvider/AuthProvider";
@@ -8,7 +7,7 @@ import { useCart } from "../CartContext/CartContext";
 
 const ShoppingCart = () => {
     const { user } = useContext(AuthContext);
-    const {handleDelete} = useCart()
+    const { handleDelete } = useCart();
     const [cartItems, setCartItems] = useState([]);
     const [coupon, setCoupon] = useState("");
     const [isDiscountApplied, setIsDiscountApplied] = useState(false);
@@ -38,7 +37,6 @@ const ShoppingCart = () => {
 
     // Apply 20% discount if the coupon is valid
     const discount = isDiscountApplied ? subTotal * 0.2 : 0;
-    // const grandTotal = subTotal - discount + shippingCost;
 
     // Handle coupon code application
     const handleApplyCoupon = () => {
@@ -49,35 +47,35 @@ const ShoppingCart = () => {
         }
     };
 
-    // const handleDelete = _id => {
-    //     Swal.fire({
-    //         title: "Are you sure?",
-    //         text: "You won't be able to revert this!",
-    //         icon: "warning",
-    //         showCancelButton: true,
-    //         confirmButtonColor: "#3085d6",
-    //         cancelButtonColor: "#d33",
-    //         confirmButtonText: "Yes, delete it!"
-    //     })
-    //         .then(result => {
-    //             if (result.isConfirmed) {
-    //                 axios.delete(`https://icy-tales-backend.vercel.app/deleteItem/${_id}`)
-    //                     .then(response => {
-    //                         if (response.data.deletedCount > 0) {
-    //                             Swal.fire({
-    //                                 title: "Deleted!",
-    //                                 text: "Item deleted from cart. Happy shopping!",
-    //                                 icon: "success"
-    //                             });
-    //                             setCartItems(prevBookmarks => prevBookmarks.filter(i => i._id !== _id));
-    //                         }
-    //                     })
-    //                     .catch(error => {
-    //                         console.error("Error deleting bookmark:", error);
-    //                     });
-    //             }
-    //         });
-    // };
+    // Handle deletion of an item from the cart
+    const handleItemDelete = (_id) => {
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!",
+        }).then((result) => {
+            if (result.isConfirmed) {
+                axios.delete(`https://icy-tales-backend.vercel.app/deleteItem/${_id}`)
+                    .then(response => {
+                        if (response.data.deletedCount > 0) {
+                            Swal.fire({
+                                title: "Deleted!",
+                                text: "Item deleted from cart. Happy shopping!",
+                                icon: "success"
+                            });
+                            setCartItems(prevItems => prevItems.filter(item => item._id !== _id));
+                        }
+                    })
+                    .catch(error => {
+                        console.error("Error deleting item:", error);
+                    });
+            }
+        });
+    };
 
     return (
         <div>
@@ -124,7 +122,7 @@ const ShoppingCart = () => {
                                     <button onClick={() => handleQuantityChange(item._id, 1)} className="text-gray-700 font-bold">+</button>
                                 </div>
                                 <span className="font-semibold text-gray-800 text-sm md:text-base">${(item.price * item.quantity).toFixed(2)}</span>
-                                <button onClick={() => handleDelete(item._id)} className="text-red-500 text-lg md:text-xl font-bold">×</button>
+                                <button onClick={() => handleItemDelete(item._id)} className="text-red-500 text-lg md:text-xl font-bold">×</button>
                             </div>
                         ))}
 
@@ -167,11 +165,6 @@ const ShoppingCart = () => {
                             <span className="font-semibold text-sm">                                ${(subTotal - discount).toFixed(2)}</span>
                         </div>
 
-                        {/* <div className="flex justify-between font-semibold text-lg mb-4">
-                            <span>Grand Total:</span>
-                            <span className="text-pink-600">${grandTotal.toFixed(2)}</span>
-                        </div> */}
-
                         <Link to={'/checkOut'}>
                             <button className="w-full py-3 bg-pink-500 text-white font-semibold rounded-md hover:bg-pink-600 transition">Proceed to Checkout</button>
                         </Link>
@@ -180,7 +173,6 @@ const ShoppingCart = () => {
                 </div>
             </div>
         </div>
-
     );
 };
 

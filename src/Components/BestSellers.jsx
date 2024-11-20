@@ -11,8 +11,8 @@ import { Pagination } from 'swiper/modules';
 import { ShoppingCart, Star } from 'lucide-react';
 import { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import Swal from 'sweetalert2';
 import { AuthContext } from '../AuthProvider/AuthProvider';
+import { useCart } from '../CartContext/CartContext';
 
 const BestSellers = () => {
 
@@ -27,42 +27,8 @@ const BestSellers = () => {
 
     const { user } = useContext(AuthContext)
 
-    const handlePost = (e, post) => {
-        e.preventDefault();
-        const name = user?.displayName;
-        const email = user?.email;
-        const image = user?.photoURL;
-        const title = post.title; // Get the title from the passed post object
-        const category = post.category || "General"; // Assuming a default category if not provided
-        const price = post.price;
-        const currentTime = new Date();
-        const photo = post.image || ""; // Assuming a default empty photo if not provided
-        const description = post.description;
-        const size = post.size || 'L';
-        const quantity = post.quantity || 1;
-        const color = post.quantity || 'white';
+    const { handlePost } = useCart();
 
-        const newPost = { name, email, size, image, quantity, color, title, category, price, currentTime, photo, description };
-        console.log(newPost);
-
-        fetch('https://icy-tales-backend.vercel.app/addCart', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(newPost)
-        })
-            .then(res => res.json())
-            .then(data => {
-                if (data.insertedId) {
-                    Swal.fire({
-                        title: 'Success!',
-                        text: 'This item is now in your cart. Enjoy your shopping!',
-                        icon: 'success',
-                        confirmButtonText: 'Cool'
-                    });
-                    // e.target.reset();
-                }
-            });
-    };
 
     return <div className="py-14 ">
 

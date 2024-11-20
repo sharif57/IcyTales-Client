@@ -201,12 +201,12 @@ export default function Navbar() {
           {/* Login and Cart buttons */}
           <li className="flex items-center gap-4 mt-4 lg:mt-0 lg:ml-4">
 
-            <Link to="/blogs/cart" className="relative inline-flex items-center space-x-2 text-gray-800 hover:text-gray-600">
+            {user && <Link to="/blogs/cart" className="relative inline-flex items-center space-x-2 text-gray-800 hover:text-gray-600">
               <ShoppingBag className="size-10" />
               <span className="absolute top-0 right-0 -mt-2 -mr-2 w-5 h-5 bg-red-500 text-white text-xs font-semibold rounded-full flex items-center justify-center">
                 {items.length}
               </span>
-            </Link>
+            </Link>}
 
             <div className="dropdown dropdown-end">
               {/* Show this dropdown when the user is logged in */}
